@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "./node_modules/.bin/webpack-dev-server --config ./webpack/webpack.dev.config.js"
   },
   "author": "Yahia_Zaky <zaky20@hotmail.com>",
   "license": "ISC",
@@ -27,6 +28,7 @@
     "css-loader": "^0.28.9",
     "eslint": "^4.17.0",
     "eslint-plugin-react": "^7.6.1",
+    "less": "^2.7.3",
     "less-loader": "^4.0.5",
     "style-loader": "^0.20.1"
   },
