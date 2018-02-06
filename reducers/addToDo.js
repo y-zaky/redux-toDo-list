@@ -1,4 +1,4 @@
-import ADD_TODO from '../actionTypes/index'
+import { ADD_TODO } from '../actionTypes/index'
 
 const initialState = {
   toDo: []
@@ -11,7 +11,7 @@ export default (state = initialState, action) => {
     case ADD_TODO:
       return {
         ...state,
-        toDo: state.toDo.push(action.payload)
+        toDo: state.toDo.concat(action.payload)
       }
     default:
     return state
