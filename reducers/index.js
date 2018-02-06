@@ -1,8 +1,8 @@
-import addToDo from './addToDo'
+import toDo from './toDo'
 
 import { combineReducers } from "redux"
 
 
 export default combineReducers({
-  addToDo
+  toDo
 })

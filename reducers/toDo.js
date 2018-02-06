@@ -12,7 +12,6 @@ export default (state = initialState, action) => {
   switch (action.type) {
 
     case ADD_TODO:
-    console.log('action payload', action.payload);
       return {
         ...state,
         toDo: state.toDo.concat(action.payload)

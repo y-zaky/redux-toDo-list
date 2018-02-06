@@ -49,8 +49,8 @@ class App extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  toDo: state.addToDo.toDo,
-  currentToDo: state.addToDo.editToDo
+  toDo: state.toDo.toDo,
+  currentToDo: state.toDo.editToDo
 })
 
 const mapDispatchToProps = {
