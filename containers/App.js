@@ -21,7 +21,7 @@ class App extends Component {
 
   handleEditNewToDo (evt) {
 
-    this.setState({ newTodo: evt.target.value })
+    this.props.editToDo(evt.target.value)
 
   }
 
@@ -39,7 +39,7 @@ class App extends Component {
 
     return (
       <div>
-        <p>{this.input}</p>
+
         <input value={this.state.newTodo} onChange={this.handleEditNewToDo}></input>
         <button onClick={this.createTodo}>Add To Do</button>
         <List value={this.props.toDo}> </List>
@@ -51,7 +51,8 @@ class App extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  toDo: state.addToDo.toDo
+  toDo: state.addToDo.toDo,
+  editToDo: state.editToDo.toDoEdit
 })
 
 const mapDispatchToProps = {
