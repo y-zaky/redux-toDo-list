@@ -4,7 +4,6 @@ export default class List extends Component {
 
   render () {
 
-    console.log(this.props)
     return (
       <div>
         <p>{this.props.value}</p>

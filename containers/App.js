@@ -4,15 +4,13 @@ import { connect } from 'react-redux'
 import List from '../components/List'
 
 import { addToDo as addToDoAction } from '../actions/addToDo'
-import { log } from 'util';
+import { editToDo as editToDoAction } from '../actions/editToDo'
 
 class App extends Component {
 
   constructor (props) {
 
     super(props)
-
-    this.state = { newTodo: '' };
 
     this.handleEditNewToDo = this.handleEditNewToDo.bind(this)
     this.createTodo = this.createTodo.bind(this)
@@ -27,7 +25,7 @@ class App extends Component {
 
   createTodo () {
 
-    this.props.addToDo(this.state.newTodo)
+    this.props.addToDo(this.props.currentToDo)
 
   }
 
@@ -40,9 +38,9 @@ class App extends Component {
     return (
       <div>
 
-        <input value={this.state.newTodo} onChange={this.handleEditNewToDo}></input>
+        <input value={this.props.currentToDo} onChange={this.handleEditNewToDo}></input>
         <button onClick={this.createTodo}>Add To Do</button>
-        <List value={this.props.toDo}> </List>
+        <List value={this.props.toDo}></List>
       </div>
     )  
 
@@ -52,11 +50,12 @@ class App extends Component {
 
 const mapStateToProps = (state) => ({
   toDo: state.addToDo.toDo,
-  editToDo: state.editToDo.toDoEdit
+  currentToDo: state.addToDo.editToDo
 })
 
 const mapDispatchToProps = {
-  addToDo: addToDoAction
+  addToDo: addToDoAction,
+  editToDo: editToDoAction
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)
