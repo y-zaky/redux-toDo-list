@@ -3,11 +3,24 @@ import React, { Component } from 'react'
 export default class List extends Component {
   render () {
 
+    console.log('list props', this.props)
+
     const toDosListArr = this.props.value
-    const toDos = toDosListArr.map( (toDo, index) => <li key={index}>{toDo}</li> )
+    const toDos = toDosListArr.map( 
+      (toDo, index) => {
+        return (
+          <div key={index}>
+            <li >{toDo}</li>
+            <button onClick={this.props.delete}>Delete</button>
+          </div>
+        )
+      }
+    )
 
     return (
-      <div> {toDos} </div>
+
+        <div> {toDos} </div>
+ 
     )
 
   }
