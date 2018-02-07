@@ -11,7 +11,7 @@ export default class List extends Component {
         return (
           <div key={index}>
             <li >{toDo}</li>
-            <button onClick={this.props.delete}>Delete</button>
+            <button onClick={ () => {this.props.delete(toDo)} }>Delete</button>
           </div>
         )
       }

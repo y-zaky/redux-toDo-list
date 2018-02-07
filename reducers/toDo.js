@@ -24,7 +24,7 @@ export default (state = initialState, action) => {
     case DELETE_TODO:
       return {
         ...state,
-        toDo: ["hi"]
+        toDo: state.toDo.filter(toDo => toDo != action.payload)
       }
     default:
     return state

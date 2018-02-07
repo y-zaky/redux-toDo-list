@@ -1,5 +1,6 @@
 import { DELETE_TODO } from '../actionTypes'
 
-export const deleteToDo = () => ({
-  type: DELETE_TODO
+export const deleteToDo = (toDo) => ({
+  type: DELETE_TODO,
+  payload: toDo
 })

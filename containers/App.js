@@ -32,9 +32,9 @@ class App extends Component {
   }
 
   // TODO
-  deleteToDo () {
-
-    this.props.deleteToDo()
+  deleteToDo (toDo) {
+console.log('toDo to Delete', toDo)
+    this.props.deleteToDo(toDo)
 console.log('deleted')
   }
 
