@@ -42,7 +42,7 @@ console.log('deleted')
  // Javascript evaluation /expression practise. onChange =this.handleEditNewToDo() 
   render () {
 
-    console.log(this.deleteTodo)
+
 
     return (
       <div>

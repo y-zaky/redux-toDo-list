@@ -9,6 +9,8 @@ const initialState = {
 
 export default (state = initialState, action) => {
 
+  console.log('action toDo', action.payload)
+  console.log('action state', state.toDo)
   switch (action.type) {
 
     case ADD_TODO:
@@ -24,7 +26,13 @@ export default (state = initialState, action) => {
     case DELETE_TODO:
       return {
         ...state,
-        toDo: state.toDo.filter(toDo => toDo != action.payload)
+        toDo: state.toDo.filter(
+          (toDo, index) => {
+            return (
+              index !== action.payload.toDo.index
+            )
+          }
+        )
       }
     default:
     return state

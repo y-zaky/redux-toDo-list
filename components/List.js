@@ -3,15 +3,14 @@ import React, { Component } from 'react'
 export default class List extends Component {
   render () {
 
-    console.log('list props', this.props)
-
     const toDosListArr = this.props.value
     const toDos = toDosListArr.map( 
       (toDo, index) => {
+    
         return (
           <div key={index}>
             <li >{toDo}</li>
-            <button onClick={ () => {this.props.delete(toDo)} }>Delete</button>
+            <button onClick={ () => {this.props.delete({toDo, index})} }>Delete</button>
           </div>
         )
       }
