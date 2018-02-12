@@ -1,20 +1,33 @@
 import React, { Component } from 'react'
+import { editToDo } from '../actions/editToDo';
 
 export default class List extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
 
     this.editToDo = this.editToDo.bind(this)
+
+    this.state = {
+      hi: false
+    }
   }
 
-  editToDo (toDoObj) {
+  editToDo (toDo) {
 
-     const main =  document.getElementById(`hi${toDoObj.index}`);
-     const input = document.createElement('input');
-     main.appendChild(input);
+    console.log('hi frst time',toDo)
+    
   }
 
   render () {
+
+    // let input = null
+    // if (this.props.editClicked) {input = <input/>} 
+
+    // let listElement = null
+    // this.props.editClicked ? listElement = <input/> :listElement = <li >{index}.  {toDo}</li>
+
+setTimeout(()=>{ this.setState({hi:true}) }, 3000)
+const listItemEdit = this.state.hi ? <input  /> : <button onClick={ () => this.editToDo(toDo) }>Edit</button> ;
 
     const toDosListArr = this.props.value
     const toDos = toDosListArr.map( 
@@ -24,11 +37,12 @@ export default class List extends Component {
           <div id={`hi${index}`} key={index}>
             <li >{index}.  {toDo}</li>
             <button onClick={ () => {console.log('this', this); this.props.delete({toDo, index})} }>Delete</button>
-            <button onClick={ () => this.editToDo({toDo, index}) }>Edit</button>
+            {listItemEdit}
           </div>
         )
       }
     )
+    
 
     return (
 
