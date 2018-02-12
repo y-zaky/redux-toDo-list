@@ -1,50 +1,24 @@
 import React, { Component } from 'react'
 import { editToDo } from '../actions/editToDo';
 
-export default class List extends Component {
+export default class ListItem extends Component {
   constructor (props) {
     super(props)
-
-    this.editToDo = this.editToDo.bind(this)
-
- 
   }
 
-  editToDo (toDo) {
-
-    this.props.editClickedDispatch()
-    
-  }
+  
 
   render () {
-    console.log(this.props)
-    // let input = null
-    // if (this.props.editClicked) {input = <input/>} 
-
-    // let listElement = null
-    // this.props.editClicked ? listElement = <input/> :listElement = <li >{index}.  {toDo}</li>
-
-
-const listItemEdit = this.props.editClicked ? <input /> : <button onClick={ () => this.editToDo() }>Edit</button> ;
-
-    const toDosListArr = this.props.value
-    const toDos = toDosListArr.map( 
-      (toDo, index) => {
-    
-        return (
-          <div id={`hi${index}`} key={index}>
-            <li >{index}.  {toDo}</li>
-            <button onClick={ () => {console.log('this', this); this.props.delete({toDo, index})} }>Delete</button>
-            {listItemEdit}
-          </div>
-        )
-      }
-    )
-    
+  
+const listItemEdit = this.props.editClicked ? <input /> : <button onClick={ () => this.props.editClickedDispatch(this.props.index) }>Edit</button> ;
 
     return (
 
-        <div> {toDos} </div>
+      <div id={`hi${this.props.index}`} >
+        <li >{this.props.index}.  {this.props.toDo}</li>
+        <button onClick={ () => {console.log('this', this); this.props.delete({toDo: this.props.toDo, index: this.props.index})} }>Delete</button>
+        {listItemEdit}
+     </div>
  
     )
 

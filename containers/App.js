@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import List from '../components/List'
+import ListItem from '../components/List'
 
 import { addToDo as addToDoAction } from '../actions/addToDo'
 import { editToDo as editToDoAction } from '../actions/editToDo'
@@ -35,32 +35,43 @@ class App extends Component {
 
   // TODO
   deleteToDo (toDo) {
-console.log('toDo to Delete', toDo)
+
     this.props.deleteToDo(toDo)
-console.log('deleted')
+
   }
 
-  editToDoClicked () {
-    console.log('editClicked')
-    this.props.eeditToDoClicked()
+  editToDoClicked (index) {
+    console.log('editClicked',index)
+    this.props.editToDoClicked()
   }
 
  // Javascript evaluation /expression practise. onChange =this.handleEditNewToDo() 
   render () {
 
+    const toDosListArr = this.props.toDo
+    const toDos = toDosListArr.map( 
+      (toDo, index) => {
+    
+        return (
+          <ListItem
+             key={index}
+             index={index} 
+             toDo={toDo}
+             editClicked={this.props.editClicked}
+             editClickedDispatch={this.editToDoClicked}
+             value={this.props.toDo}
+             delete={this.deleteToDo}
+          >
+          </ListItem>
+        )
+      }
+    )
 
     return (
       <div>
-
         <input value={this.props.currentToDo} onChange={this.handleEditNewToDo}></input>
         <button onClick={this.createTodo}>Add To Do</button>
-        <List 
-          editClicked={this.props.editClicked}
-          editClickedDispatch={this.props.editToDoClicked}
-          value={this.props.toDo}
-          delete={this.deleteToDo}
-        >
-        </List>
+        {toDos}
       </div>
     )  
 

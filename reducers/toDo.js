@@ -10,8 +10,8 @@ const initialState = {
 
 export default (state = initialState, action) => {
 
-  console.log('action toDo', action.payload)
-  console.log('action state', state.toDo)
+  // console.log('action toDo', action.payload)
+  // console.log('action state', state.toDo)
   switch (action.type) {
 
     case ADD_TODO:
