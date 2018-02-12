@@ -6,6 +6,7 @@ import List from '../components/List'
 import { addToDo as addToDoAction } from '../actions/addToDo'
 import { editToDo as editToDoAction } from '../actions/editToDo'
 import { deleteToDo as deleteToDoAction } from '../actions/deleteToDo'
+import { toDoEdited as toDoEditedAction } from '../actions/toDoEdited'
 
 class App extends Component {
 
@@ -16,6 +17,7 @@ class App extends Component {
     this.handleEditNewToDo = this.handleEditNewToDo.bind(this)
     this.createTodo = this.createTodo.bind(this)
     this.deleteToDo = this.deleteToDo.bind(this)
+    this.editToDoClicked = this.editToDoClicked.bind(this)
 
   }
 
@@ -38,10 +40,13 @@ console.log('toDo to Delete', toDo)
 console.log('deleted')
   }
 
+  editToDoClicked () {
+    console.log('editClicked')
+    this.props.eeditToDoClicked()
+  }
 
  // Javascript evaluation /expression practise. onChange =this.handleEditNewToDo() 
   render () {
-
 
 
     return (
@@ -49,7 +54,13 @@ console.log('deleted')
 
         <input value={this.props.currentToDo} onChange={this.handleEditNewToDo}></input>
         <button onClick={this.createTodo}>Add To Do</button>
-        <List value={this.props.toDo} delete={this.deleteToDo}></List>
+        <List 
+          editClicked={this.props.editClicked}
+          editClickedDispatch={this.props.editToDoClicked}
+          value={this.props.toDo}
+          delete={this.deleteToDo}
+        >
+        </List>
       </div>
     )  
 
@@ -59,13 +70,15 @@ console.log('deleted')
 
 const mapStateToProps = (state) => ({
   toDo: state.toDo.toDo,
-  currentToDo: state.toDo.editToDo
+  currentToDo: state.toDo.editToDo,
+  editClicked: state.toDo.toDoEdited
 })
 
 const mapDispatchToProps = {
   addToDo: addToDoAction,
   editToDo: editToDoAction,
-  deleteToDo: deleteToDoAction
+  deleteToDo: deleteToDoAction,
+  editToDoClicked: toDoEditedAction
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)

@@ -7,27 +7,25 @@ export default class List extends Component {
 
     this.editToDo = this.editToDo.bind(this)
 
-    this.state = {
-      hi: false
-    }
+ 
   }
 
   editToDo (toDo) {
 
-    console.log('hi frst time',toDo)
+    this.props.editClickedDispatch()
     
   }
 
   render () {
-
+    console.log(this.props)
     // let input = null
     // if (this.props.editClicked) {input = <input/>} 
 
     // let listElement = null
     // this.props.editClicked ? listElement = <input/> :listElement = <li >{index}.  {toDo}</li>
 
-setTimeout(()=>{ this.setState({hi:true}) }, 3000)
-const listItemEdit = this.state.hi ? <input  /> : <button onClick={ () => this.editToDo(toDo) }>Edit</button> ;
+
+const listItemEdit = this.props.editClicked ? <input /> : <button onClick={ () => this.editToDo() }>Edit</button> ;
 
     const toDosListArr = this.props.value
     const toDos = toDosListArr.map( 
