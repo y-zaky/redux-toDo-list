@@ -7,7 +7,8 @@ import { addToDo as addToDoAction } from '../actions/addToDo'
 import { deleteToDo as deleteToDoAction } from '../actions/deleteToDo'
 import { toDoEdited as toDoEditedAction } from '../actions/toDoEdited'
 import { editToDo as editToDoAction } from '../actions/editToDo'
-import {saveToDoEdit as saveToDoEditAction} from '../actions/saveToDoEdit'
+import { saveToDoEdit as saveToDoEditAction } from '../actions/saveToDoEdit'
+import { saveToDo as saveToDoAction } from '../actions/saveToDo'
 
 class App extends Component {
 
@@ -20,6 +21,7 @@ class App extends Component {
     this.editToDoClicked = this.editToDoClicked.bind(this)
     this.handleEditNewToDo = this.handleEditNewToDo.bind(this)
     this.saveToDoEdit = this.saveToDoEdit.bind(this)
+    this.saveToDo = this.saveToDo.bind(this)
   }
 
   handleEditNewToDo (e) {
@@ -47,14 +49,20 @@ class App extends Component {
   }
 
   saveToDoEdit (e) {
-    console.log('e.target.value savetoDoEdit', e.target.value)
+   
     this.props.saveToDoEdit(e.target.value)
+  }
+
+  saveToDo (editedUserInput) {
+
+    this.props.saveToDo(editedUserInput)
+
   }
 
  // Javascript evaluation /expression practise. onChange =this.handleEditNewToDo() 
   render () {
 
-    console.log('toDo',this.props)
+    console.log('App Props',this.props)
     const toDosListArr = this.props.toDo
     
     const toDos = toDosListArr.map( 
@@ -68,6 +76,8 @@ class App extends Component {
              editClicked={toDo.isEdited}
              editClickedDispatch={this.editToDoClicked}
              saveToDoEdit={this.saveToDoEdit}
+             editedSaveToDo={this.props.editedSaveToDo}
+             saveToDo={this.saveToDo}
              value={this.props.toDo}
              delete={this.deleteToDo}
           >
@@ -90,7 +100,8 @@ class App extends Component {
 
 const mapStateToProps = (state) => ({
   toDo: state.toDo.toDo,
-  currentToDo: state.toDo.editToDo
+  currentToDo: state.toDo.editToDo,
+  editedSaveToDo: state.toDo.saveToDoEdit
 })
 
 const mapDispatchToProps = {
@@ -98,7 +109,8 @@ const mapDispatchToProps = {
   deleteToDo: deleteToDoAction,
   editToDoClicked: toDoEditedAction,
   editToDo: editToDoAction,
-  saveToDoEdit: saveToDoEditAction
+  saveToDoEdit: saveToDoEditAction,
+  saveToDo: saveToDoAction
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)
