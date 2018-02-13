@@ -87,9 +87,12 @@ class App extends Component {
     )
 
     return (
-      <div>
-        <input defaultValue={this.props.currentToDo} onChange={this.handleEditNewToDo}></input>
-        <button onClick={this.createTodo}>Add To Do</button>
+      <div className='main__container'>
+        <h1 className='main-title'>Get Shit Done.</h1>
+        <div className='input-button-container'>
+          <input id='main-todo-input' defaultValue={this.props.currentToDo} onChange={this.handleEditNewToDo}></input>
+          <button className='button-addToDo' onClick={this.createTodo}>Add To Do</button>
+        </div>
         {toDos}
       </div>
     )  
