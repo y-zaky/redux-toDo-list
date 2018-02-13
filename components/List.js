@@ -11,13 +11,20 @@ export default class ListItem extends Component {
   render () {
   console.log('list props',this.props)
 
-const listItemEdit = this.props.editClicked ? <input placeholder={this.props.doDo}/> : <button onClick={ () => this.props.editClickedDispatch(this.props.index) }>Edit</button> ;
-
+const listItemEdit = this.props.editClicked ? 
+  <div>
+    <input defaultValue={this.props.toDo}/>
+    <button>Save</button>
+    <button onClick={ () => {console.log('this', this); this.props.delete({toDo: this.props.toDo, index: this.props.index})} }>Delete</button>
+  </div> : 
+  <div>
+    <li >{this.props.index}.  {this.props.toDo}</li>
+    <button onClick={ () => this.props.editClickedDispatch(this.props.index) }>Edit</button>
+    <button onClick={ () => {console.log('this', this); this.props.delete({toDo: this.props.toDo, index: this.props.index})} }>Delete</button>
+  </div>
     return (
 
       <div id={`hi${this.props.index}`} >
-        <li >{this.props.index}.  {this.props.toDo}</li>
-        <button onClick={ () => {console.log('this', this); this.props.delete({toDo: this.props.toDo, index: this.props.index})} }>Delete</button>
         {listItemEdit}
      </div>
  
