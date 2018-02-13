@@ -1,11 +1,12 @@
 //how can i editToDo using a string and keeping it immutable?
 
-import { ADD_TODO, DELETE_TODO, TODO_EDITED, EDIT_TODO } from '../actionTypes/index'
+import { ADD_TODO, DELETE_TODO, TODO_EDITED, EDIT_TODO, SAVETODO_EDIT } from '../actionTypes/index'
 
 const initialState = {
   editToDo: "",
   toDo: [],
-  toDoEdited: false
+  toDoEdited: false,
+  saveToDoEdit: ""
 }
 
 export default (state = initialState, action) => {
@@ -40,13 +41,18 @@ export default (state = initialState, action) => {
         )
       }
     case TODO_EDITED:
-    state.toDo[action.payload].isEdited = true
       return {
         ...state,
         toDo: state.toDo.map(
           (toDo,index) => toDo.index === action.payload ? {...toDo, isEdited: true} : toDo 
         )
       }
+    case SAVETODO_EDIT:
+      return {
+        ...state,
+        saveToDoEdit: action.payload
+      }
+      
     default:
       return state
 

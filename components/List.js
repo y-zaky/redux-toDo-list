@@ -13,8 +13,8 @@ export default class ListItem extends Component {
 
 const listItemEdit = this.props.editClicked ? 
   <div>
-    <input defaultValue={this.props.toDo}/>
-    <button>Save</button>
+    <input defaultValue={this.props.toDo} onChange={this.props.saveToDoEdit}/>
+    <button onClick ={ () => this.props}>Save</button>
     <button onClick={ () => {console.log('this', this); this.props.delete({toDo: this.props.toDo, index: this.props.index})} }>Delete</button>
   </div> : 
   <div>
