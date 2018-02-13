@@ -35,10 +35,12 @@ export default (state = initialState, action) => {
         )
       }
     case TODO_EDITED:
-      state.toDo[action.payload].isEdited = true
+    state.toDo[action.payload].isEdited = true
       return {
         ...state,
-        toDo: state.toDo
+        toDo: state.toDo.map(
+          (toDo,index) => toDo.index === action.payload ? {...toDo, isEdited: true} : toDo 
+        )
       }
     default:
       return state
