@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { editToDo } from '../actions/editToDo';
+
 
 export default class ListItem extends Component {
   constructor (props) {
@@ -9,7 +9,7 @@ export default class ListItem extends Component {
   
 
   render () {
-  console.log(this.props)
+  console.log('list props',this.props)
 
 const listItemEdit = this.props.editClicked ? <input /> : <button onClick={ () => this.props.editClickedDispatch(this.props.index) }>Edit</button> ;
 

@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import ListItem from '../components/List'
 
 import { addToDo as addToDoAction } from '../actions/addToDo'
-import { editToDo as editToDoAction } from '../actions/editToDo'
 import { deleteToDo as deleteToDoAction } from '../actions/deleteToDo'
 import { toDoEdited as toDoEditedAction } from '../actions/toDoEdited'
 
@@ -14,16 +13,9 @@ class App extends Component {
 
     super(props)
 
-    this.handleEditNewToDo = this.handleEditNewToDo.bind(this)
     this.createTodo = this.createTodo.bind(this)
     this.deleteToDo = this.deleteToDo.bind(this)
     this.editToDoClicked = this.editToDoClicked.bind(this)
-
-  }
-
-  handleEditNewToDo (evt) {
-
-    this.props.editToDo(evt.target.value)
 
   }
 
@@ -50,6 +42,7 @@ class App extends Component {
 
     console.log('toDo',this.props.toDo)
     const toDosListArr = this.props.toDo
+    console.log('toDosListArr',toDosListArr)
     const toDos = toDosListArr.map( 
       (toDo, index) => {
     
@@ -58,7 +51,7 @@ class App extends Component {
              key={index}
              index={index} 
              toDo={toDo.toDo}
-             editClicked={this.props.editClicked}
+             editClicked={toDo.isEdited}
              editClickedDispatch={this.editToDoClicked}
              value={this.props.toDo}
              delete={this.deleteToDo}
@@ -83,12 +76,10 @@ class App extends Component {
 const mapStateToProps = (state) => ({
   toDo: state.toDo.toDo,
   currentToDo: state.toDo.editToDo,
-  editClicked: state.toDo.toDoEdited
 })
 
 const mapDispatchToProps = {
   addToDo: addToDoAction,
-  editToDo: editToDoAction,
   deleteToDo: deleteToDoAction,
   editToDoClicked: toDoEditedAction
 }
