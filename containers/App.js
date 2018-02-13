@@ -6,6 +6,7 @@ import ListItem from '../components/List'
 import { addToDo as addToDoAction } from '../actions/addToDo'
 import { deleteToDo as deleteToDoAction } from '../actions/deleteToDo'
 import { toDoEdited as toDoEditedAction } from '../actions/toDoEdited'
+import { editToDo as editToDoAction } from '../actions/editToDo'
 
 class App extends Component {
 
@@ -16,7 +17,12 @@ class App extends Component {
     this.createTodo = this.createTodo.bind(this)
     this.deleteToDo = this.deleteToDo.bind(this)
     this.editToDoClicked = this.editToDoClicked.bind(this)
+    this.handleEditNewToDo = this.handleEditNewToDo.bind(this)
+  }
 
+  handleEditNewToDo (e) {
+
+    this.props.editToDo(e.target.value)
   }
 
   createTodo () {
@@ -33,16 +39,17 @@ class App extends Component {
   }
 
   editToDoClicked (index) {
-    console.log('editClicked', index)
+
     this.props.editToDoClicked(index)
+
   }
 
  // Javascript evaluation /expression practise. onChange =this.handleEditNewToDo() 
   render () {
 
-    console.log('toDo',this.props.toDo)
+    console.log('toDo',this.props)
     const toDosListArr = this.props.toDo
-    console.log('toDosListArr',toDosListArr)
+    
     const toDos = toDosListArr.map( 
       (toDo, index) => {
     
@@ -63,7 +70,7 @@ class App extends Component {
 
     return (
       <div>
-        <input value={this.props.currentToDo} onChange={this.handleEditNewToDo}></input>
+        <input defaultValue={this.props.currentToDo} onChange={this.handleEditNewToDo}></input>
         <button onClick={this.createTodo}>Add To Do</button>
         {toDos}
       </div>
@@ -75,13 +82,14 @@ class App extends Component {
 
 const mapStateToProps = (state) => ({
   toDo: state.toDo.toDo,
-  currentToDo: state.toDo.editToDo,
+  currentToDo: state.toDo.editToDo
 })
 
 const mapDispatchToProps = {
   addToDo: addToDoAction,
   deleteToDo: deleteToDoAction,
-  editToDoClicked: toDoEditedAction
+  editToDoClicked: toDoEditedAction,
+  editToDo: editToDoAction
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)
