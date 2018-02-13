@@ -13,16 +13,16 @@ export default class ListItem extends Component {
   
 
 const listItemEdit = this.props.editClicked ? 
-  <div>
-    <input defaultValue={this.props.toDo} onChange={this.props.saveToDoEdit}/>
+  <li className="list__li">
+    <input defaultValue={this.props.toDo} onChange={this.props.saveToDoEdit} />
     <button onClick ={ () => { this.props.editClickedDispatch(this.props.index); this.props.saveToDo({toDo: this.props.editedSaveToDo, index: this.props.index}) }}>Save</button>
     <button onClick={ () => {console.log('this', this); this.props.delete({toDo: this.props.toDo, index: this.props.index})} }>Delete</button>
-  </div> : 
-  <div>
-    <li >{this.props.index}.  {this.props.toDo}</li>
+  </li> : 
+  <li className="list__li">
+    {this.props.toDo}
     <button onClick={ () => this.props.editClickedDispatch(this.props.index) }>Edit</button>
     <button onClick={ () => {console.log('this', this); this.props.delete({toDo: this.props.toDo, index: this.props.index})} }>Delete</button>
-  </div>
+  </li>
     return (
 
       <div id={`hi${this.props.index}`} >

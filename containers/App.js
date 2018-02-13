@@ -93,7 +93,9 @@ class App extends Component {
           <input id='main-todo-input' defaultValue={this.props.currentToDo} onChange={this.handleEditNewToDo}></input>
           <button className='button-addToDo' onClick={this.createTodo}>Add To Do</button>
         </div>
+        <ol>
         {toDos}
+        </ol>
       </div>
     )  
 
