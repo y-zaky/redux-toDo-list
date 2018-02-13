@@ -41,13 +41,14 @@ class App extends Component {
   }
 
   editToDoClicked (index) {
-    console.log('editClicked',index)
-    this.props.editToDoClicked()
+    console.log('editClicked', index)
+    this.props.editToDoClicked(index)
   }
 
  // Javascript evaluation /expression practise. onChange =this.handleEditNewToDo() 
   render () {
 
+    console.log('toDo',this.props.toDo)
     const toDosListArr = this.props.toDo
     const toDos = toDosListArr.map( 
       (toDo, index) => {
@@ -56,7 +57,7 @@ class App extends Component {
           <ListItem
              key={index}
              index={index} 
-             toDo={toDo}
+             toDo={toDo.toDo}
              editClicked={this.props.editClicked}
              editClickedDispatch={this.editToDoClicked}
              value={this.props.toDo}

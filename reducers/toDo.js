@@ -17,7 +17,11 @@ export default (state = initialState, action) => {
     case ADD_TODO:
       return {
         ...state,
-        toDo: state.toDo.concat(action.payload)
+        toDo: state.toDo.concat({
+          toDo: action.payload,
+          index: state.toDo.length,
+          isEdited: false
+        })
       }
     case EDIT_TODO:
       return {
@@ -38,7 +42,7 @@ export default (state = initialState, action) => {
     case TODO_EDITED:
       return {
         ...state,
-        toDoEdited: true
+        toDo: state.toDo[action.payload].isEdited = true
       }
     default:
       return state

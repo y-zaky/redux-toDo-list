@@ -9,7 +9,8 @@ export default class ListItem extends Component {
   
 
   render () {
-  
+  console.log(this.props)
+
 const listItemEdit = this.props.editClicked ? <input /> : <button onClick={ () => this.props.editClickedDispatch(this.props.index) }>Edit</button> ;
 
     return (
