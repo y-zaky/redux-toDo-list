@@ -54,7 +54,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         toDo: state.toDo.map(
-         (toDo, index) => toDo.index === action.payload.index ? {...toDo, toDo: [action.payload.toDo]} : toDo
+         (toDo, index) => toDo.index === action.payload.index && !!action.payload.toDo ? {...toDo, toDo: [action.payload.toDo] } : toDo
         )
       }
       
