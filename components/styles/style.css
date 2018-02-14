@@ -51,7 +51,7 @@ body {
 } 
 
 .list__li--active{
-background-color: red;
+  text-decoration:line-through; 
 }
 
 button {

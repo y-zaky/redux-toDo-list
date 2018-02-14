@@ -13,7 +13,9 @@ export default class ListItem extends Component {
   
     console.log(this.props)
 
-const listItemEdit = this.props.editClicked ? 
+    const toggleButton = this.props.active ? <button onClick={ () => { this.props.toggleClass({index: this.props.index}) } }>Unmark</button> : <button onClick={ () => { this.props.toggleClass({index: this.props.index}) } }>Done</button>
+
+    const listItemEdit = this.props.editClicked ? 
   <li className="list__li">
     <input defaultValue={this.props.toDo} onChange={this.props.saveToDoEdit} />
     <div className="button__container">
@@ -21,21 +23,21 @@ const listItemEdit = this.props.editClicked ?
       <button onClick={ () => {console.log('this', this); this.props.delete({toDo: this.props.toDo, index: this.props.index})} }>Delete</button>
     </div >
   </li> : 
-  <li className={this.props.active? "list__li--active": "list__li"}>
+  <li className={this.props.active ? "list__li--active": "list__li"}>
     {this.props.toDo}
     <div className="button__container">
       <button onClick={ () => this.props.editClickedDispatch(this.props.index) }>Edit</button>
       <button onClick={ () => {console.log('this', this); this.props.delete({toDo: this.props.toDo, index: this.props.index})} }>Delete</button>
-      <button onClick={ () => { this.props.toggleClass({index: this.props.index}) } }>Done</button>
-
+      {toggleButton}
     </div>
   </li>
+
     return (
 
       <div id="toDo__item" >
         {listItemEdit}
-     </div>
- 
+      </div>
+
     )
 
   }
