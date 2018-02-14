@@ -31,6 +31,7 @@ body {
 #main-todo-input {
   width: 500px;
   height: 35px;
+  outline-color: green;
 }
 
 .button-addToDo {
@@ -46,12 +47,16 @@ body {
 }
 
 .list__li {
+  /* display: flex; */
+  margin-bottom: 3px;
   /* display: flex;
   align-items: center;*/
+  /* display: inline-block; */
 } 
 
 .list__li--active{
-  text-decoration:line-through; 
+  text-decoration: line-through;
+  text-decoration-color: green; 
 }
 
 button {
@@ -60,6 +65,8 @@ button {
   background-color: #7B7476;
   font-size: 15px;
   margin-left: 2px;
+  outline-style: none;
+  cursor: pointer;
 }
 
 .button__container {

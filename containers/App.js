@@ -103,7 +103,7 @@ class App extends Component {
           <button className='button-addToDo' onClick={this.createTodo}>Add To Do</button>
         </div>
         <ol>
-        {toDos}
+          {toDos}
         </ol>
       </div>
     )  
