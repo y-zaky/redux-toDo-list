@@ -9,6 +9,7 @@ import { toDoEdited as toDoEditedAction } from '../actions/toDoEdited'
 import { editToDo as editToDoAction } from '../actions/editToDo'
 import { saveToDoEdit as saveToDoEditAction } from '../actions/saveToDoEdit'
 import { saveToDo as saveToDoAction } from '../actions/saveToDo'
+import { toggleClass as toggleClassAction } from '../actions/toggleClass'
 
 class App extends Component {
 
@@ -22,6 +23,7 @@ class App extends Component {
     this.handleEditNewToDo = this.handleEditNewToDo.bind(this)
     this.saveToDoEdit = this.saveToDoEdit.bind(this)
     this.saveToDo = this.saveToDo.bind(this)
+    this.toggleClass = this.toggleClass.bind(this)
   }
 
   handleEditNewToDo (e) {
@@ -59,6 +61,11 @@ class App extends Component {
 
   }
 
+  toggleClass (toDo) {
+    console.log('toggle class', toDo)
+    this.props.toggleClass(toDo)
+  }
+
  // Javascript evaluation /expression practise. onChange =this.handleEditNewToDo() 
   render () {
 
@@ -80,6 +87,8 @@ class App extends Component {
              saveToDo={this.saveToDo}
              value={this.props.toDo}
              delete={this.deleteToDo}
+             toggleClass={this.toggleClass}
+             active={toDo.active}
           >
           </ListItem>
         )
@@ -115,7 +124,8 @@ const mapDispatchToProps = {
   editToDoClicked: toDoEditedAction,
   editToDo: editToDoAction,
   saveToDoEdit: saveToDoEditAction,
-  saveToDo: saveToDoAction
+  saveToDo: saveToDoAction,
+  toggleClass: toggleClassAction
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)
