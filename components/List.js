@@ -25,9 +25,11 @@ export default class ListItem extends Component {
   </li> : 
   <li className={this.props.active ? "list__li--active" : "list__li"}>
       {this.props.toDo}
-      <button onClick={ () => this.props.editClickedDispatch(this.props.index) }>Edit</button>
-      <button onClick={ () => {console.log('this', this); this.props.delete({toDo: this.props.toDo, index: this.props.index})} }>Delete</button>
-      {toggleButton}
+      <div className="button__container">
+        <button onClick={ () => this.props.editClickedDispatch(this.props.index) }>Edit</button>
+        <button onClick={ () => {console.log('this', this); this.props.delete({toDo: this.props.toDo, index: this.props.index})} }>Delete</button>
+        {toggleButton}
+      </div>
   </li>
 
     return listItemEdit

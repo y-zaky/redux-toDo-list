@@ -9,6 +9,7 @@
 
 body {
   background-color: rgba(141, 141, 141, 0.637);
+  counter-reset: section;
 }
 
 .main-title {
@@ -47,6 +48,7 @@ body {
 }
 
 .list__li {
+  
   /* display: flex; */
   margin-bottom: 3px;
   /* display: flex;
@@ -55,8 +57,18 @@ body {
 } 
 
 .list__li--active{
+  
   text-decoration: line-through;
   text-decoration-color: green; 
+}
+
+li::before {
+  counter-increment: section;                 /* Increment the value of section counter by 1 */
+  content: counter(section) "." " "; 
+}
+
+li {
+  display: flex;
 }
 
 button {
