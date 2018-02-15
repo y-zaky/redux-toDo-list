@@ -37,7 +37,7 @@ class App extends Component {
 
   }
 
-  // TODO
+  
   deleteToDo (toDo) {
 
     this.props.deleteToDo(toDo)
@@ -62,11 +62,11 @@ class App extends Component {
   }
 
   toggleClass (toDo) {
-    console.log('toggle class', toDo)
-    this.props.toggleClass(toDo)
-  }
 
- // Javascript evaluation /expression practise. onChange =this.handleEditNewToDo() 
+    this.props.toggleClass(toDo)
+    
+  }
+ 
   render () {
 
     console.log('App Props',this.props)

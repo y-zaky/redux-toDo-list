@@ -3,11 +3,6 @@ import './styles/style.css'
 
 
 export default class ListItem extends Component {
-  constructor (props) {
-    super(props)
-  }
-
-  
 
   render () {
   

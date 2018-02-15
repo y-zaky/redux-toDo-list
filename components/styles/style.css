@@ -85,13 +85,7 @@ input {
   width: 100px;
 }
 
-
-   /* Smartphones (portrait and landscape) ----------- */
-   @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
-    /* Styles */
-    }
-    
-    /* Smartphones (landscape) ----------- */
+    /* Smartphones  */
     @media only screen and (min-width : 386px) {
       input {
         width:150px
@@ -101,7 +95,6 @@ input {
       }
     }
 
-    /* Smartphones (landscape) ----------- */
     @media only screen and (min-width : 425px) {
       input {
         width:200px
