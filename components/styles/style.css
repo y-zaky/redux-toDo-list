@@ -92,6 +92,16 @@ input {
     }
     
     /* Smartphones (landscape) ----------- */
+    @media only screen and (min-width : 386px) {
+      input {
+        width:150px
+      }
+      #main-todo-input {
+        width: 250px;
+      }
+    }
+
+    /* Smartphones (landscape) ----------- */
     @media only screen and (min-width : 425px) {
       input {
         width:200px
@@ -125,6 +135,15 @@ input {
     @media only screen  and (min-width : 857px) {
       .main-title {
         font-size: 100px;
+      }
+      li {
+        font-size: 16px;
+      }
+      button {
+        font-size: 14px;
+      }
+      .button-addToDo {
+        font-size: 16px;
       }
     }
    
