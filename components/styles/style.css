@@ -1,10 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Bungee+Inline|Open+Sans');
 
-/* font-family: 'Open Sans', sans-serif; */
+/* font-family: 'Open Sans', sans-serif;  -- matches well with bungeeInline*/
 *{
-  /* font-family: 'Open Sans', sans-serif; */
   font-family: 'Bungee Inline', cursive;
-  font-size: 20px;
+  font-size: 15px;
 }
 
 body {
@@ -15,22 +14,23 @@ body {
 .main-title {
   color:white;
   font-family: 'Bungee Inline', cursive;  
-  font-size: 8rem;
+  font-size: 11vw;
 }
 
 .main__container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 100px;
 }
 
 .input-button-container {
-  /* display: flex;
-  align-items: center; */
+  display: flex;
+  align-items: center;
 }
 
 #main-todo-input {
-  width: 500px;
+  width: 200px;
   height: 35px;
   outline-color: green;
 }
@@ -38,7 +38,7 @@ body {
 .button-addToDo {
   height: 35px;
   padding: 5px;
-  font-size: 18px;
+  font-size: 13px;
 }
 
 .toDo__item {
@@ -46,15 +46,6 @@ body {
   font-size: 17px;
   width: 400px;
 }
-
-.list__li {
-  
-  /* display: flex; */
-  margin-bottom: 3px;
-  /* display: flex;
-  align-items: center;*/
-  /* display: inline-block; */
-} 
 
 .list__li--active{
   
@@ -69,13 +60,15 @@ li::before {
 
 li {
   display: flex;
+  margin-bottom: 3px;
+  align-items: center;
 }
 
 button {
   border-radius: 10px;
   padding: 5px;
   background-color: #7B7476;
-  font-size: 15px;
+  font-size: 13px;
   margin-left: 2px;
   outline-style: none;
   cursor: pointer;
@@ -83,10 +76,55 @@ button {
 
 .button__container {
   margin-left: 15px;
+  display: flex;
 }
 
 input {
   border-radius: 10px;
   padding: 3px;
-  width: 400px;
+  width: 100px;
 }
+
+
+   /* Smartphones (portrait and landscape) ----------- */
+   @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+    /* Styles */
+    }
+    
+    /* Smartphones (landscape) ----------- */
+    @media only screen and (min-width : 425px) {
+      input {
+        width:200px
+      }
+      #main-todo-input {
+        width: 300px;
+      }
+    }
+    
+    /* Mid size Smartphones*/
+    @media only screen and (min-width : 586px) {
+      #main-todo-input {
+        width: 400px;
+      }
+      input {
+        width:300px
+      }
+    }
+    
+      /* iPads/Tablets */
+      @media only screen and (min-width : 768px) {
+        #main-todo-input {
+          width: 500px;
+        }
+        input {
+          width:400px
+        }
+      }
+    
+    /* Desktops and laptops ----------- */
+    @media only screen  and (min-width : 857px) {
+      .main-title {
+        font-size: 100px;
+      }
+    }
+   
