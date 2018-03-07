@@ -69,7 +69,7 @@ class App extends Component {
  
   render () {
 
-    console.log('App Props',this.props)
+    console.log('App Props', this.props)
     const toDosListArr = this.props.toDo
     
     const toDos = toDosListArr.map( 
